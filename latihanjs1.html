@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Pegawai</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<table id="pegawaiTable">
+    <thead>
+        <tr>
+            <th>Nama Pegawai</th>
+            <th>Jabatan</th>
+            <th>Status</th>
+            <th>Gaji Pokok</th>
+            <th>Tunjangan Jabatan</th>
+            <th>BPJS</th>
+            <th>Tunjangan Keluarga</th>
+            <th>Total Gaji</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Ridwan</td>
+            <td>Manager</td>
+            <td>Menikah</td>
+            <td id="gajiRidwan"></td>
+            <td id="tunjanganJabatanRidwan"></td>
+            <td id="bpjsRidwan"></td>
+            <td id="tunjanganKeluargaRidwan"></td>
+            <td id="totalGajiRidwan"></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="7" style="text-align: right;">Total Gaji Keseluruhan:</td>
+            <td id="totalGajiSemua"></td>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+    // Menghitung gaji
+    function hitungGaji() {
+        // Mendapatkan elemen tabel
+        var gajiPokok = 0;
+        var jabatan = "Manager";
+        var status = "Menikah";
+
+        // Menghitung gaji pokok berdasarkan jabatan
+        switch (jabatan) {
+            case "Manager":
+                gajiPokok = 15000000;
+                break;
+            case "Asisten Manager":
+                gajiPokok = 10000000;
+                break;
+            case "Staff":
+                gajiPokok = 5000000;
+                break;
+            default:
+                gajiPokok = 0;
+        }
+
+        // Menghitung tunjangan jabatan
+        var tunjanganJabatan = gajiPokok * 0.15;
+
+        // Menghitung BPJS
+        var bpjs = gajiPokok * 0.1;
+
+        // Menghitung tunjangan keluarga
+        var tunjanganKeluarga = (status === "Menikah") ? (gajiPokok * 0.2) : 0;
+
+        // Menghitung total gaji
+        var totalGaji = gajiPokok + tunjanganJabatan + tunjanganKeluarga - bpjs;
+
+        // Menyimpan nilai gaji dan komponennya ke dalam elemen tabel
+        document.getElementById("gajiRidwan").textContent = "Rp " + gajiPokok.toLocaleString();
+        document.getElementById("tunjanganJabatanRidwan").textContent = "Rp " + tunjanganJabatan.toLocaleString();
+        document.getElementById("bpjsRidwan").textContent = "Rp " + bpjs.toLocaleString();
+        document.getElementById("tunjanganKeluargaRidwan").textContent = "Rp " + tunjanganKeluarga.toLocaleString();
+        document.getElementById("totalGajiRidwan").textContent = "Rp " + totalGaji.toLocaleString();
+        document.getElementById("totalGajiSemua").textContent = "Rp " + totalGaji.toLocaleString();
+    }
+
+    // Memanggil fungsi hitungGaji saat halaman dimuat
+    hitungGaji();
+</script>
+
+</body>
+</html>
