@@ -1,0 +1,8 @@
+.table-container {
+    max-height: 400px; /* Sesuaikan dengan ukuran popup */
+    overflow-y: auto; /* Aktifkan gulir vertikal jika konten melebihi batas maksimum */
+}
+
+.swal-modal {
+    width: 40% !important; /* Mengatur lebar popup menjadi 80% dari lebar layar */
+}
