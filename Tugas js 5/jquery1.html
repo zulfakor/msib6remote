@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handler</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h2>Letakan Kursor ke masing-masing kotak untuk melihat gambar</h2>
+    <div id="div1">This is a Horse</div>
+    <div id="div2">This is a Cat</div>
+    <div id="div3">This is a Elephant</div>
+
+    <audio id="horseSound" src="sound/horse_sound.mp3"></audio>
+    <audio id="catSound" src="sound/cat_sound.mp3"></audio>
+    <audio id="elephantSound" src="sound/elephant_sound.mp3"></audio>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+      //tugas hari ini
+      //ketika mousenya diatas gambar atau kotak maka hewannya bisa bersuara
+      $('document').ready(function () {
+        $('#div1').mouseover(function () {
+          $(this).css({
+            'background-image': 'url(https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/117/2023/11/30/Screenshot-173-2238099686.png)',
+            'background-size': 'contain',
+            'background-repeat': 'no-repeat',
+            'background-position': 'center',
+          });
+          $('#horseSound')[0].play();
+        }).mouseout(function () {
+          $(this).css({
+            background: 'green',
+          });
+          $('#horseSound')[0].pause();
+          $('#horseSound')[0].currentTime = 0;
+        });
+
+        $('#div2').mouseover(function () {
+          $(this).css({
+            'background-image': 'url(https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p2/01/2023/11/17/Kucing-Ragamuffin-4227232859.jpg)',
+            'background-size': 'contain',
+            'background-repeat': 'no-repeat',
+            'background-position': 'center',
+          });
+          $('#catSound')[0].play();
+        }).mouseout(function () {
+          $(this).css({
+            background: 'green',
+          });
+          $('#catSound')[0].pause();
+          $('#catSound')[0].currentTime = 0;
+        });
+
+        $('#div3').mouseover(function () {
+          $(this).css({
+            'background-image': 'url(https://c.files.bbci.co.uk/10D74/production/_126208986_wed5.jpg)',
+            'background-size': 'contain',
+            'background-repeat': 'no-repeat',
+            'background-position': 'center',
+          });
+          $('#elephantSound')[0].play();
+        }).mouseout(function () {
+          $(this).css({
+            background: 'green',
+          });
+          $('#elephantSound')[0].pause();
+          $('#elephantSound')[0].currentTime = 0;
+        });
+      });
+    </script>
+  </body>
+</html>
